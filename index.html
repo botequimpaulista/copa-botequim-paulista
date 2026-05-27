@@ -4,18 +4,16 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Copa do Mundo no Botequim Paulista</title>
+<title>Copa do Mundo no Estação Praça Gastrobar</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Barlow+Condensed:wght@400;600;700;800&family=Barlow:wght@400;500;600&display=swap" rel="stylesheet">
 
 <style>
 :root {
-  --vinho: #722632;
-  --preto: #090909;
+  --verde: #1F564C;
+  --preto: #161617;
   --dourado: #DAA520;
   --creme: #F5EDD6;
-  --vinho-claro: #963646;
-  --verde: #1F564C;
   --verde-claro: #2a7a6c;
   --amarelo-brasil: #FFDF00;
 }
@@ -58,9 +56,9 @@ body::before {
   position: absolute;
   inset: 0;
   background:
-    radial-gradient(ellipse 80% 60% at 50% 0%, rgba(218,165,32,.16) 0%, transparent 60%),
-    radial-gradient(ellipse 60% 40% at 20% 80%, rgba(114,38,50,.42) 0%, transparent 60%),
-    linear-gradient(160deg, #090909 0%, #1b0d11 42%, #090909 100%);
+    radial-gradient(ellipse 80% 60% at 50% 0%, rgba(218,165,32,.18) 0%, transparent 60%),
+    radial-gradient(ellipse 60% 40% at 20% 80%, rgba(31,86,76,.42) 0%, transparent 60%),
+    linear-gradient(160deg, #0d0d0e 0%, #1a2a28 42%, #0d0d0e 100%);
 }
 
 .hero-bg::after {
@@ -180,7 +178,7 @@ body::before {
 
 .cta-btn {
   display: inline-block;
-  background: var(--vinho);
+  background: var(--verde);
   color: #fff;
   font-family: 'Barlow Condensed', sans-serif;
   font-weight: 800;
@@ -191,13 +189,13 @@ body::before {
   border-radius: 5px;
   text-decoration: none;
   transition: background .2s, transform .2s, box-shadow .2s;
-  box-shadow: 0 8px 30px rgba(114,38,50,.38);
+  box-shadow: 0 8px 30px rgba(31,86,76,.4);
 }
 
 .cta-btn:hover {
-  background: var(--vinho-claro);
+  background: var(--verde-claro);
   transform: translateY(-2px);
-  box-shadow: 0 12px 40px rgba(114,38,50,.48);
+  box-shadow: 0 12px 40px rgba(31,86,76,.5);
 }
 
 .secondary-btn {
@@ -279,7 +277,7 @@ body::before {
 
 .games-section {
   padding: 90px 20px 100px;
-  background: linear-gradient(170deg, #090909 0%, #14090c 100%);
+  background: linear-gradient(170deg, #111 0%, #1a2824 100%);
   border-top: 1px solid rgba(218,165,32,.15);
   border-bottom: 1px solid rgba(218,165,32,.15);
 }
@@ -456,8 +454,8 @@ body::before {
 }
 
 .exp-card {
-  background: #14090c;
-  border: 1px solid rgba(218,165,32,.18);
+  background: #0f1a18;
+  border: 1px solid rgba(31,86,76,.3);
   border-radius: 12px;
   padding: 28px 24px;
   transition: transform .2s, border-color .2s;
@@ -484,7 +482,7 @@ body::before {
 }
 
 .location-section {
-  background: linear-gradient(170deg, #14090c 0%, #090909 100%);
+  background: linear-gradient(170deg, #0d1a17 0%, #0d0d0e 100%);
   padding: 90px 20px;
   border-top: 1px solid rgba(218,165,32,.12);
 }
@@ -621,6 +619,75 @@ footer .hashtag {
     font-size: 27px;
   }
 }
+
+.hero-offer {
+  display: flex;
+  align-items: center;
+  gap: 22px;
+
+  margin: 14px 0 30px;
+  padding: 18px 24px;
+
+  background: rgba(0,0,0,.24);
+  border: 1px solid rgba(218,165,32,.18);
+  border-radius: 14px;
+
+  backdrop-filter: blur(8px);
+
+  max-width: 640px;
+}
+
+.offer-price {
+  min-width: 170px;
+
+  font-family: 'Playfair Display', serif;
+  font-size: 44px;
+  font-weight: 900;
+  line-height: 1;
+
+  color: var(--dourado);
+}
+
+.offer-info {
+  flex: 1;
+}
+
+.offer-info strong {
+  display: block;
+
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 15px;
+
+  letter-spacing: 1px;
+  text-transform: uppercase;
+
+  color: #fff;
+
+  margin-bottom: 6px;
+}
+
+.offer-info span {
+  color: rgba(245,237,214,.72);
+
+  font-size: 14px;
+  line-height: 1.65;
+}
+
+@media (max-width: 620px) {
+
+  .hero-offer {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+  }
+
+  .offer-price {
+    min-width: auto;
+    font-size: 52px;
+  }
+
+}
+
 </style>
 </head>
 
@@ -636,10 +703,10 @@ footer .hashtag {
 
       <div class="hero-left">
         <div class="logo-circle">
-          <img src="imagens/logo_padrao.png" alt="Botequim Paulista" class="logo-img">
+          <img src="imagens/logo_padrao.png" alt="Estação Praça Gastrobar" class="logo-img">
         </div>
 
-        <p class="section-label">Copa do Mundo 2026 — Botequim Paulista</p>
+        <p class="section-label">Copa do Mundo 2026 — Estação Praça Gastrobar</p>
 
         <h1 class="hero-title">
           Escolha seu jogo.<br>
@@ -663,8 +730,22 @@ footer .hashtag {
         </h2>
 
         <p class="panel-text">
-          Selecione o jogo que deseja assistir e garanta sua reserva para viver esse momento com o Botequim Paulista.
+          Selecione o jogo que deseja assistir e garanta sua reserva para viver esse momento com o Estação Praça.
         </p>
+
+        <div class="hero-offer">
+        <div class="offer-price">
+          R$99,90
+        </div>
+
+        <div class="offer-info">
+          <strong>Ingresso com rodízio incluso</strong>
+          <span>
+            O ingresso dá direito ao rodízio de boteco,
+            participação nos sorteios e valores especiais nos drinks.
+          </span>
+        </div>
+      </div>
 
         <div class="panel-list">
           <div class="panel-item">
@@ -854,7 +935,7 @@ footer .hashtag {
     <div class="divider"></div>
 
     <p class="section-description">
-      O Botequim Paulista preparou uma estrutura especial para transformar cada partida em um momento memorável.
+      O Estação Praça preparou uma estrutura especial para transformar cada partida em um momento memorável.
     </p>
 
     <div class="experience-grid">
@@ -888,12 +969,12 @@ footer .hashtag {
       <div class="location-card">
         <p class="section-label">Onde assistir</p>
 
-        <h2>Botequim<br><em>Paulista</em></h2>
+        <h2>Estação Praça<br><em>Gastrobar</em></h2>
 
         <p>
-          Av. Moema, 2<br>
-          Moema<br>
-          São Paulo - SP
+          Av. Kennedy, 260<br>
+          Jardim Três Marias<br>
+          São Bernardo do Campo — SP
         </p>
 
         <br>
@@ -902,7 +983,13 @@ footer .hashtag {
       </div>
 
       <div class="location-map">
-        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3656.0252999838262!2d-46.6628061256412!3d-23.603425578770928!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94ce5b00380f4e8f%3A0x57c3dbb12072d893!2sBotequim%20Paulista!5e0!3m2!1sen!2sbr!4v1779888483111!5m2!1sen!2sbr" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        <iframe
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3653.7001863784362!2d-46.56180982466602!3d-23.686677478713943!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94ce43baeb21239d%3A0x22912fda6e2c8373!2zRXN0YcOnw6NvIFByYcOnYQ!5e0!3m2!1sen!2sbr!4v1779795492224!5m2!1sen!2sbr"
+          allowfullscreen=""
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade"
+          title="Localização Estação Praça Gastrobar">
+        </iframe>
       </div>
 
     </div>
@@ -911,12 +998,12 @@ footer .hashtag {
 
 <footer>
   <div class="logo-circle">
-    <img src="imagens/logo_padrao.png" alt="Botequim Paulista" class="logo-img">
+    <img src="imagens/logo_padrao.png" alt="Estação Praça Gastrobar" class="logo-img">
   </div>
 
-  <span class="hashtag">#VemParaOBotequimPaulista</span>
-  <p><strong>Botequim Paulista</strong></p>
-  <p>Av. Moema, 2 - Moema - São Paulo - SP</p>
+  <span class="hashtag">#VemParaAEstação</span>
+  <p><strong>Estação Praça Gastrobar</strong></p>
+  <p>Av. Kennedy, 260 — Jardim Três Marias — São Bernardo do Campo, SP</p>
 </footer>
 
 </body>

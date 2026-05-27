@@ -3,16 +3,14 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Copa do Mundo no Botequim Paulista</title>
+<title>Copa do Mundo no Estação Praça Gastrobar</title>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Barlow+Condensed:wght@400;600;700;800&family=Barlow:wght@400;500&display=swap" rel="stylesheet">
 <style>
   :root {
-    --vinho: #722632;
-    --preto: #090909;
+    --verde: #1F564C;
+    --preto: #161617;
     --dourado: #DAA520;
     --creme: #F5EDD6;
-    --vinho-claro: #963646;
-    --verde: #1F564C;
     --verde-claro: #2a7a6c;
     --amarelo-brasil: #FFDF00;
   }
@@ -52,9 +50,9 @@
   .hero-bg {
     position: absolute; inset: 0;
     background:
-      radial-gradient(ellipse 80% 60% at 50% 0%, rgba(218,165,32,.16) 0%, transparent 60%),
-      radial-gradient(ellipse 60% 40% at 20% 80%, rgba(114,38,50,.42) 0%, transparent 60%),
-      linear-gradient(160deg, #090909 0%, #1b0d11 40%, #090909 100%);
+      radial-gradient(ellipse 80% 60% at 50% 0%, rgba(218,165,32,.18) 0%, transparent 60%),
+      radial-gradient(ellipse 60% 40% at 20% 80%, rgba(31,86,76,.4) 0%, transparent 60%),
+      linear-gradient(160deg, #0d0d0e 0%, #1a2a28 40%, #0d0d0e 100%);
   }
   .hero-bg::after {
     content: ''; position: absolute; inset: 0;
@@ -98,7 +96,7 @@
   }
   .hero-title {
     font-family: 'Playfair Display', serif;
-    font-size: clamp(42px, 8vw, 86px); font-weight: 900; line-height: .95; color: #fff;
+    font-size: clamp(38px, 7vw, 74px); font-weight: 900; line-height: .95; color: #fff;
     animation: fadeUp .9s .2s ease both;
   }
   .hero-title span { display: block; color: var(--dourado); -webkit-text-stroke: 1px var(--dourado); }
@@ -110,14 +108,14 @@
   }
   .flags-row {
     display: flex; align-items: center; justify-content: center;
-    gap: 16px; margin-bottom: 40px;
+    gap: 18px; margin-bottom: 26px;
     animation: fadeUp .9s .4s ease both;
   }
   .flag-pill {
     display: flex; align-items: center; gap: 8px;
     background: rgba(255,255,255,.06); border: 1px solid rgba(255,255,255,.1);
-    border-radius: 40px; padding: 8px 18px;
-    font-family: 'Barlow Condensed', sans-serif; font-size: 15px; font-weight: 700;
+    border-radius: 40px; padding: 10px 22px;
+    font-family: 'Barlow Condensed', sans-serif; font-size: 18px; font-weight: 700;
     letter-spacing: 1px; color: #fff;
   }
   .flag-emoji { font-size: 22px; }
@@ -125,38 +123,45 @@
     font-family: 'Playfair Display', serif; font-size: 13px; font-weight: 700;
     color: var(--dourado); letter-spacing: 2px;
   }
-  .date-strip {
-    display: inline-flex; align-items: center; gap: 20px;
-    background: var(--dourado); color: var(--preto); padding: 10px 28px;
-    border-radius: 4px; font-family: 'Barlow Condensed', sans-serif;
-    font-weight: 800; font-size: 15px; letter-spacing: 2px; text-transform: uppercase;
-    margin-bottom: 40px; animation: fadeUp .9s .5s ease both;
-  }
-  .date-strip span { opacity: .6; }
+.date-strip {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+
+  background: rgba(0,0,0,.22);
+  color: rgba(245,237,214,.88);
+
+  padding: 9px 18px;
+  border-radius: 999px;
+
+  border: 1px solid rgba(218,165,32,.22);
+  backdrop-filter: blur(8px);
+
+  font-family: 'Barlow', sans-serif;
+  font-weight: 600;
+  font-size: 13px;
+  letter-spacing: .4px;
+  text-transform: none;
+
+  margin-bottom: 24px;
+  animation: fadeUp .9s .5s ease both;
+}
+
+.date-strip span {
+  opacity: .45;
+  color: var(--dourado);
+}
   .cta-btn {
-    display: inline-block;
-    background: var(--vinho);
-    color: #fff;
-    font-family: 'Barlow Condensed', sans-serif;
-    font-weight: 700;
-    font-size: 17px;
-    letter-spacing: 2.5px;
-    text-transform: uppercase;
-    padding: 16px 44px;
-    border-radius: 4px;
-    text-decoration: none;
-    border: none;
-    cursor: pointer;
+    display: inline-block; background: var(--verde); color: #fff;
+    font-family: 'Barlow Condensed', sans-serif; font-weight: 700; font-size: 17px;
+    letter-spacing: 2.5px; text-transform: uppercase; padding: 16px 44px;
+    border-radius: 4px; text-decoration: none; border: none; cursor: pointer;
     transition: background .2s, transform .2s, box-shadow .2s;
-    box-shadow: 0 8px 30px rgba(114,38,50,.38);
+    box-shadow: 0 8px 30px rgba(31,86,76,.4);
     animation: fadeUp .9s .6s ease both;
   }
-
-  .cta-btn:hover {
-    background: var(--vinho-claro);
-    transform: translateY(-2px);
-    box-shadow: 0 12px 40px rgba(114,38,50,.48);
-  }
+  .cta-btn:hover { background: var(--verde-claro); transform: translateY(-2px); box-shadow: 0 12px 40px rgba(31,86,76,.5); }
   .scroll-down {
     position: absolute; bottom: 30px; left: 50%; transform: translateX(-50%);
     display: flex; flex-direction: column; align-items: center; gap: 6px;
@@ -186,7 +191,7 @@
 
   /* ════════════════════ PROMOÇÕES ════════════════════ */
   .promo-section {
-    background: linear-gradient(170deg, #090909 0%, #14090c 100%);
+    background: linear-gradient(170deg, #111 0%, #1a2824 100%);
     border-top: 1px solid rgba(218,165,32,.15);
     border-bottom: 1px solid rgba(218,165,32,.15);
   }
@@ -199,7 +204,7 @@
 
   /* Card com imagem no topo */
   .promo-card {
-    background: #14090c;
+    background: #0f1a18;
     border: 1px solid rgba(218,165,32,.15);
     border-radius: 10px;
     overflow: hidden;
@@ -252,25 +257,15 @@
   .promo-card-body p { font-size: 15px; line-height: 1.6; color: rgba(245,237,214,.7); }
 
   /* ════════════════════ EXPERIÊNCIA ════════════════════ */
-.exp-banner {
+  .exp-banner {
   position: relative;
   padding: 110px 20px;
   overflow: hidden;
 
   background-image:
     linear-gradient(
-      rgba(9, 9, 9, 0.78),
-      rgba(18, 7, 10, 0.84)
-    ),
-    radial-gradient(
-      circle at top right,
-      rgba(114, 38, 50, 0.35),
-      transparent 42%
-    ),
-    radial-gradient(
-      circle at bottom left,
-      rgba(218, 165, 32, 0.10),
-      transparent 38%
+      rgba(16, 74, 63, 0.82),
+      rgba(10, 32, 28, 0.88)
     ),
     url("imagens/bar-copa.jpg");
 
@@ -384,10 +379,9 @@
      O comentário acima de cada card indica qual petisco é.
   */
   .menu-card {
-    background: #14090c;
-    border: 1px solid rgba(218,165,32,.18);
-    border-radius: 8px;
-    overflow: hidden;
+    background: #0f1a18;
+    border: 1px solid rgba(31,86,76,.3);
+    border-radius: 8px; overflow: hidden;
     transition: border-color .2s, transform .2s;
   }
   .menu-card:hover { border-color: var(--dourado); transform: translateY(-3px); }
@@ -426,7 +420,7 @@
 
   /* ════════════════════ LOCALIZAÇÃO ════════════════════ */
   .location-section {
-    background: linear-gradient(170deg, #14090c 0%, #090909 100%);
+    background: linear-gradient(170deg, #0d1a17 0%, #0d0d0e 100%);
     border-top: 1px solid rgba(218,165,32,.12);
   }
   .location-grid {
@@ -467,7 +461,7 @@
 
   /* ════════════════════ FORMULÁRIO ════════════════════ */
   .form-section {
-    background: linear-gradient(170deg, #14090c 0%, #090909 100%);
+    background: linear-gradient(170deg, #0d1a17 0%, #0d0d0e 100%);
     padding: 100px 20px;
     border-top: 1px solid rgba(218,165,32,.1);
   }
@@ -504,7 +498,7 @@
     font-family: 'Barlow', sans-serif; font-size: 15px; outline: none;
     transition: border-color .2s, background .2s; appearance: none;
   }
-  .form-group select option { background: #1b0d11; }
+  .form-group select option { background: #1a2a28; }
   .form-group input:focus, .form-group select:focus, .form-group textarea:focus {
     border-color: var(--dourado); background: rgba(218,165,32,.05);
   }
@@ -582,8 +576,8 @@
   }
 
   .flag-img {
-  width: 26px;
-  height: 18px;
+  width: 30px;
+  height: 20px;
   object-fit: cover;
   border-radius: 3px;
   box-shadow: 0 0 8px rgba(0,0,0,.25);
@@ -788,6 +782,82 @@
   text-decoration: underline;
 }
 
+.ticket-offer {
+  display: inline-flex;
+  align-items: center;
+  gap: 16px;
+
+  margin: -12px 0 24px;
+  padding: 12px 18px;
+
+  background: rgba(0,0,0,.22);
+  border: 1px solid rgba(218,165,32,.18);
+  border-radius: 12px;
+
+  backdrop-filter: blur(8px);
+
+  max-width: 520px;
+
+  animation: fadeUp .9s .55s ease both;
+}
+
+.ticket-price {
+  min-width: 112px;
+
+  font-family: 'Playfair Display', serif;
+  font-size: 30px;
+  font-weight: 900;
+  line-height: 1;
+
+  color: var(--dourado);
+  text-align: left;
+}
+
+.ticket-info {
+  text-align: left;
+}
+
+.ticket-info strong {
+  display: block;
+
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 13px;
+  letter-spacing: 1.1px;
+  text-transform: uppercase;
+
+  color: #fff;
+
+  margin-bottom: 2px;
+}
+
+.ticket-info p {
+  color: rgba(245,237,214,.70);
+  font-size: 12px;
+  line-height: 1.35;
+}
+
+@media (max-width: 620px) {
+  .ticket-offer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+
+    padding: 14px 16px;
+    margin: -4px 0 24px;
+  }
+
+  .ticket-price {
+    min-width: auto;
+    font-size: 34px;
+    text-align: center;
+  }
+
+  .ticket-info {
+    text-align: center;
+  }
+}
+
 </style>
 </head>
 <body>
@@ -802,10 +872,10 @@
 
   <div class="hero-content">
     <div class="logo-circle">
-  <img src="imagens/logo_padrao.png" alt="Botequim Paulista" class="logo-img">
+  <img src="imagens/logo_padrao.png" alt="Estação Praça" class="logo-img">
   </div>
 
-    <p class="hero-eyebrow">Copa do Mundo 2026 — Botequim Paulista</p>
+    <p class="hero-eyebrow">Copa do Mundo 2026 — Gastrobar Estação Praça</p>
     <h1 class="hero-title">VIVA ESSA<br><span>EXPERIÊNCIA</span></h1>
     <p class="hero-sub">Transmissão ao vivo · DJ · Petiscos · Promoções especiais</p>
 
@@ -816,8 +886,24 @@
     </div>
 
     <div class="date-strip">
-      🗓️ 13 DE JUNHO &nbsp;<span>|</span>&nbsp; 19H &nbsp;<span>|</span>&nbsp; Botequim Paulista
-    </div>
+  <strong>13 de junho</strong>
+  <span>|</span>
+  <strong>19h</strong>
+  <span>|</span>
+  <strong>Estação Praça Gastrobar</strong>
+</div>
+
+    <div class="ticket-offer">
+  <span class="ticket-price">R$99,90</span>
+
+  <div class="ticket-info">
+    <strong>Ingresso com rodízio incluso</strong>
+    <p>
+      Direito ao rodízio de boteco, participação nos sorteios
+      e valores especiais nos drinks.
+    </p>
+  </div>
+</div>
 
     <a href="#reserva" class="cta-btn">Garantir Minha Reserva</a>
   </div>
@@ -1148,21 +1234,25 @@
 
       <!-- Mapa Google Maps -->
       <div class="location-map reveal">
-        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3656.0252999838262!2d-46.6628061256412!3d-23.603425578770928!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94ce5b00380f4e8f%3A0x57c3dbb12072d893!2sBotequim%20Paulista!5e0!3m2!1sen!2sbr!4v1779888483111!5m2!1sen!2sbr" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        <iframe
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3653.7001863784362!2d-46.56180982466602!3d-23.686677478713943!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94ce43baeb21239d%3A0x22912fda6e2c8373!2zRXN0YcOnw6NvIFByYcOnYQ!5e0!3m2!1sen!2sbr!4v1779795492224!5m2!1sen!2sbr"
+          allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
+          title="Localização Estação Praça Gastrobar">
+        </iframe>
       </div>
 
       <!-- Informações de endereço -->
       <div class="location-info reveal">
-        <h3>Botequim Paulista<br><em>Gastrobar</em></h3>
+        <h3>Estação Praça<br><em>Gastrobar</em></h3>
         <p class="location-address">
-          Av. Moema, 2<br>
-          Moema<br>
-          São Paulo — SP
+          Av. Kennedy, 260<br>
+          Jardim Três Marias<br>
+          São Bernardo do Campo — SP
         </p>
         <div class="location-badges">
           <div class="loc-badge">🗓️ <strong>13 de Junho</strong></div>
           <div class="loc-badge">⏰ A partir das <strong>18h</strong></div>
-          <div class="loc-badge">📍 <strong>Moema – SP</strong></div>
+          <div class="loc-badge">📍 <strong>SBC – SP</strong></div>
         </div>
         <br>
         <a href="#reserva" class="cta-btn" style="display:inline-block; margin-top:8px; animation:none;">
@@ -1258,7 +1348,7 @@
           <img src="https://flagcdn.com/br.svg" alt="Bandeira do Brasil" class="success-flag">
         </div>
         <h3>Reserva solicitada!</h3>
-        <p>Recebemos seu cadastro! Nossa equipe entrará em contato em breve via WhatsApp ou telefone para confirmar sua reserva.<br><br><strong>#VemParaOBotequimPaulista!</strong></p>
+        <p>Recebemos seu cadastro! Nossa equipe entrará em contato em breve via WhatsApp ou telefone para confirmar sua reserva.<br><br><strong>#VemParaAEstação!</strong></p>
       </div>
     </div>
 
@@ -1271,11 +1361,11 @@
 ══════════════════════════════════════ -->
 <footer>
   <div class="logo-circle">
-  <img src="imagens/logo_padrao.png" alt="Botequim Paulista" class="logo-img">
+  <img src="imagens/logo_padrao.png" alt="Estação Praça" class="logo-img">
   </div>
-  <span class="hashtag">#VemParaOBotequimPaulista</span>
-  <p><strong>Botequim Paulista</strong></p>
-  <p>Av. Moema, 2 - Moema - São Paulo - SP</p>
+  <span class="hashtag">#VemParaAEstação</span>
+  <p><strong>Estação Praça Gastrobar</strong></p>
+  <p>Av. Kennedy, 260 — Jardim Três Marias — São Bernardo do Campo, SP</p>
 </footer>
 
 
@@ -1353,7 +1443,7 @@ async function handleSubmit() {
     aceitePolitica: aceitePolitica ? "Sim" : "Não"
   };
 
-  fetch('https://script.google.com/macros/s/AKfycbz57JtnZQ2q4BEtt0HFn2sf6GLTRLTQCQPAR-xvTwcFE74xavziBiLS5W8mQd0GWqM9/exec', {
+  fetch('https://script.google.com/macros/s/AKfycby35MGU26Ni-gaP1U0aOR8Xa3jjDbg1J24_DIqYIYDtsBoxn10WAV4tBCdMmOBbSU0pAw/exec', {
     method: 'POST',
     mode: 'no-cors',
     headers: {
@@ -1369,8 +1459,8 @@ async function handleSubmit() {
     block: 'center'
   });
 }
-const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbz57JtnZQ2q4BEtt0HFn2sf6GLTRLTQCQPAR-xvTwcFE74xavziBiLS5W8mQd0GWqM9/exec";
-const COMPANY_WHATSAPP = "551145090121";
+const SCRIPT_URL = "https://script.google.com/macros/s/AKfycby35MGU26Ni-gaP1U0aOR8Xa3jjDbg1J24_DIqYIYDtsBoxn10WAV4tBCdMmOBbSU0pAw/exec";
+const COMPANY_WHATSAPP = "5511944930180";
 
 function openWhatsAppPopup() {
   document.getElementById("whatsappPopup").classList.add("active");
@@ -1425,7 +1515,7 @@ async function sendWhatsAppLead() {
     });
 
     const message = `
-Olá, Botequim Paulista! Quero informações sobre a reserva para assistir aos jogos da Copa.
+Olá, Estação Praça! Quero informações sobre a reserva para assistir aos jogos da Copa.
 
 Meus dados:
 Nome: ${nome}
@@ -1484,7 +1574,7 @@ function maskWhatsPhone(input) {
     <button class="whatsapp-popup-close" onclick="closeWhatsAppPopup()">×</button>
 
     <p class="section-label">Atendimento rápido</p>
-    <h3>Fale com o Botequim Paulista</h3>
+    <h3>Fale com o Estação Praça</h3>
 
     <p class="whatsapp-popup-text">
       Preencha seus dados para iniciar o atendimento pelo WhatsApp.
