@@ -215,7 +215,7 @@ function renderGames() {
       reservas: leads.filter(l => l["Reserva Confirmada"] === "Sim").length,
       pagos: leads.filter(l => l["Pagamento"] === "Pago").length,
       pessoasConfirmadas: getConfirmedPeopleCount(leads),
-      capacidade: 200
+      capacidade: 150
     };
   });
 
