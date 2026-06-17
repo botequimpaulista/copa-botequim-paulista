@@ -606,6 +606,18 @@ async function handleSubmit() {
     body: JSON.stringify(dados)
   });
 
+    const valorReserva = Number(pessoas) * 99.90;
+
+    if (typeof fbq !== 'undefined') {
+      fbq('track', 'Lead', {
+        content_name: jogo,
+        content_category: 'Copa 2026',
+        value: valorReserva,
+        currency: 'BRL',
+        num_items: Number(pessoas)
+      });
+    }
+
   document.getElementById('form-container').style.display = 'none';
   document.getElementById('success-msg').style.display = 'block';
   document.getElementById('success-msg').scrollIntoView({
@@ -681,6 +693,18 @@ Aguardo o atendimento.
     `.trim();
 
     const whatsappUrl = `https://wa.me/${COMPANY_WHATSAPP}?text=${encodeURIComponent(message)}`;
+
+    const valorReserva = Number(pessoas) * 99.90;
+
+    if (typeof fbq !== 'undefined') {
+      fbq('track', 'Lead', {
+        content_name: leadData.jogo,
+        content_category: 'Copa 2026',
+        value: valorReserva,
+        currency: 'BRL',
+        num_items: Number(pessoas)
+      });
+    }
 
     window.open(whatsappUrl, "_blank");
 
