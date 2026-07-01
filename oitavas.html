@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Copa do Mundo no Botequim Paulista</title>
+<title>Brasil x Noruega no Botequim Paulista</title>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Barlow+Condensed:wght@400;600;700;800&family=Barlow:wght@400;500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="css/style_jogos.css">
 <!-- Meta Pixel Code -->
@@ -23,6 +23,173 @@ fbq('track', 'PageView');
 src="https://www.facebook.com/tr?id=1610158686718373&ev=PageView&noscript=1"
 /></noscript>
 <!-- End Meta Pixel Code -->
+
+<style>
+  /* Modal do cardápio em PDF */
+  body.modal-open {
+    overflow: hidden;
+  }
+
+  .menu-trigger-card {
+    cursor: pointer;
+    position: relative;
+    transition: transform .25s ease, box-shadow .25s ease, border-color .25s ease;
+  }
+
+  .menu-trigger-card:hover,
+  .menu-trigger-card:focus-visible {
+    transform: translateY(-4px);
+    box-shadow: 0 22px 60px rgba(0, 0, 0, .32);
+    outline: none;
+  }
+
+  .cardapio-click-hint {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 14px;
+    padding: 8px 14px;
+    border-radius: 999px;
+    border: 1px solid rgba(218, 165, 32, .45);
+    color: #DAA520;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 15px;
+    font-weight: 700;
+    letter-spacing: .06em;
+    text-transform: uppercase;
+  }
+
+  .menu-pdf-modal {
+    position: fixed;
+    inset: 0;
+    z-index: 99999;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    padding: 24px;
+    background: rgba(0, 0, 0, .78);
+    backdrop-filter: blur(8px);
+  }
+
+  .menu-pdf-modal.active {
+    display: flex;
+  }
+
+  .menu-pdf-modal-box {
+    width: min(1100px, 100%);
+    max-height: 94vh;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    border: 1px solid rgba(218, 165, 32, .45);
+    border-radius: 24px;
+    background: #11100b;
+    box-shadow: 0 28px 90px rgba(0, 0, 0, .55);
+  }
+
+  .menu-pdf-modal-header {
+    position: relative;
+    padding: 22px 64px 18px 24px;
+    border-bottom: 1px solid rgba(255, 255, 255, .10);
+    background: linear-gradient(135deg, rgba(218, 165, 32, .18), rgba(0, 0, 0, 0));
+  }
+
+  .menu-pdf-modal-header .section-label {
+    margin-bottom: 4px;
+  }
+
+  .menu-pdf-modal-header h3 {
+    margin: 0;
+    color: #fff;
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(28px, 4vw, 44px);
+    line-height: 1;
+  }
+
+  .menu-pdf-modal-header p {
+    margin: 8px 0 0;
+    color: rgba(255, 255, 255, .74);
+    font-family: 'Barlow', sans-serif;
+    font-size: 15px;
+    line-height: 1.45;
+  }
+
+  .menu-pdf-close {
+    position: absolute;
+    top: 18px;
+    right: 18px;
+    width: 40px;
+    height: 40px;
+    border: 1px solid rgba(255, 255, 255, .18);
+    border-radius: 999px;
+    background: rgba(0, 0, 0, .35);
+    color: #fff;
+    font-size: 28px;
+    line-height: 1;
+    cursor: pointer;
+  }
+
+  .menu-pdf-close:hover {
+    background: rgba(218, 165, 32, .22);
+    border-color: rgba(218, 165, 32, .55);
+  }
+
+  .menu-pdf-viewer {
+    width: 100%;
+    height: min(68vh, 720px);
+    background: #242424;
+  }
+
+  .menu-pdf-viewer iframe {
+    display: block;
+    width: 100%;
+    height: 100%;
+    border: 0;
+    background: #242424;
+  }
+
+  .menu-pdf-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    align-items: center;
+    justify-content: center;
+    padding: 18px 20px 22px;
+    border-top: 1px solid rgba(255, 255, 255, .10);
+    background: rgba(0, 0, 0, .28);
+  }
+
+  .menu-pdf-actions .cta-btn {
+    margin: 0;
+    animation: none;
+    border: none;
+    cursor: pointer;
+  }
+
+  @media (max-width: 768px) {
+    .menu-pdf-modal {
+      padding: 12px;
+    }
+
+    .menu-pdf-modal-box {
+      max-height: 96vh;
+      border-radius: 18px;
+    }
+
+    .menu-pdf-modal-header {
+      padding: 18px 56px 14px 18px;
+    }
+
+    .menu-pdf-modal-header p {
+      font-size: 14px;
+    }
+
+    .menu-pdf-viewer {
+      height: 60vh;
+    }
+  }
+</style>
+
 </head>
 <body>
 
@@ -36,33 +203,35 @@ src="https://www.facebook.com/tr?id=1610158686718373&ev=PageView&noscript=1"
 
   <div class="hero-content">
     <div class="logo-circle">
-  <img src="imagens/logo_padrao.png" alt="Botequim Paulista" class="logo-img">
-  </div>
+      <img src="imagens/logo_padrao.png" alt="Botequim Paulista" class="logo-img">
+    </div>
 
     <p class="hero-eyebrow">Oitavas de Final - Copa do Mundo 2026</p>
-    <h1 class="hero-title">VIVA ESSA<br><span>EXPERIÊNCIA</span></h1>
-    <p class="hero-sub">Transmissão ao vivo · DJ · Petiscos · Promoções especiais</p>
+    <h1 class="hero-title">BRASIL X<br><span>NORUEGA</span></h1>
+    <p class="hero-sub">Transmissão ao vivo · Cardápio da casa · Clima de boteco paulistano em Moema</p>
 
     <div class="flags-row">
       <div class="flag-pill"><img src="https://flagcdn.com/br.svg" alt="Bandeira do Brasil" class="flag-img"> BRASIL</div>
       <span class="vs-badge">VS</span>
-      <div class="flag-pill"> A DEFINIR</div>
+      <div class="flag-pill"><img src="https://flagcdn.com/no.svg" alt="Bandeira da Noruega" class="flag-img"> NORUEGA</div>
     </div>
 
-    <div class="date-strip">A definir &nbsp;<span>|</span>&nbsp; -- &nbsp;<span>|</span>&nbsp; Botequim Paulista
+    <div class="date-strip">
+      05 DE JULHO &nbsp;<span>|</span>&nbsp; 17H &nbsp;<span>|</span>&nbsp; Botequim Paulista
     </div>
 
-    <div class="ticket-strip">
-  <div class="ticket-price">--</div>
+    <div class="ticket-strip ticket-strip-normal">
+      <div class="ticket-price">05/07</div>
 
-  <div class="ticket-info">
-    <strong>INGRESSO COM RODÍZIO INCLUSO</strong>
-    <p>
-      Direito ao rodízio de boteco, participação nos sorteios e valores especiais nos drinks.
-    </p>
-  </div>
+      <div class="ticket-info">
+        <strong>O MATA-MATA TEM ENDEREÇO EM MOEMA</strong>
+        <p>
+          Venha assistir Brasil x Noruega, domingo às 17h, com transmissão ao vivo, cardápio da casa e o clima acolhedor do Botequim Paulista.
+        </p>
+      </div>
+    </div>
 
-    <a href="#reserva" class="cta-btn">Garantir Minha Reserva</a>
+    <a href="#reserva" class="cta-btn">Reservar minha mesa</a>
   </div>
 
   <div class="scroll-down">
@@ -73,26 +242,25 @@ src="https://www.facebook.com/tr?id=1610158686718373&ev=PageView&noscript=1"
 
 
 <!-- ══════════════════════════════════════
-     PROMOÇÕES — Seção 2
-     Cada card tem um bloco .promo-img-wrap com uma <img>.
-     Instrução para substituir imagens está no comentário de cada card.
+     CHAMADAS DA EXPERIÊNCIA
+     Esta seção não comunica pacote promocional. Ela reforça a experiência da casa.
+     Troque apenas os caminhos das imagens para usar as fotos reais do Botequim Paulista.
 ══════════════════════════════════════ -->
 <section class="promo-section">
   <div class="container">
-    <p class="section-label reveal">O que vem por aí</p>
-    <h2 class="section-title reveal">Promoções <em>especiais</em><br>para o grande dia</h2>
+    <p class="section-label reveal">O encontro da torcida em Moema</p>
+    <h2 class="section-title reveal">Brasil x Noruega<br>com clima de <em>Botequim Paulista</em></h2>
     <div class="divider reveal"></div>
 
     <div class="promo-grid reveal">
 
-      <!-- ══ CARD 1 — RODÍZIO DE BOTECO
-           TROQUE A IMAGEM: substitua o src abaixo pelo caminho da sua foto.
-           Sugestão: foto de petiscos variados na mesa / mesa cheia de comida.
+      <!-- ══ CARD 1 — TELÕES
+           Sugestão de imagem: telões, ambiente da casa em dia de jogo ou salão preparado.
            Tamanho ideal: 520×280px (proporção 16:9)
       ══ -->
       <div class="promo-card">
         <div class="promo-img-wrap">
-          <img src="imagens/rodizio_boteco.jpg" alt="Rodízio de Boteco"
+          <img src="imagens/telao.jpg" alt="Transmissão ao vivo no Botequim Paulista"
                onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
           <div class="promo-img-placeholder" style="display:none;">
             <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#DAA520" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
@@ -100,20 +268,19 @@ src="https://www.facebook.com/tr?id=1610158686718373&ev=PageView&noscript=1"
           </div>
         </div>
         <div class="promo-card-body">
-          <h3>Rodízio de Boteco</h3>
-          <span class="promo-highlight">À vontade</span>
-          <p>Petiscos liberados enquanto você torce pelo Brasil!</p>
+          <h3>Transmissão ao Vivo</h3>
+          <span class="promo-highlight">Torcida reunida</span>
+          <p>Acompanhe Brasil x Noruega em um ambiente vibrante, confortável e preparado para receber a torcida em Moema.</p>
         </div>
       </div>
 
-      <!-- ══ CARD 2 — DRINKS ESPECIAIS
-           TROQUE A IMAGEM: substitua o src abaixo pelo caminho da sua foto.
-           Sugestão: foto de drinks / caipirinhas / chope gelado.
-           Tamanho ideal: 520×280px (proporção 16:9)
+      <!-- ══ CARD 2 — CARDÁPIO NORMAL
+           Sugestão de imagem: cardápio, prato da casa, petiscos ou mesa servida.
+           Clique no card para abrir o PDF em modal.
       ══ -->
-      <div class="promo-card">
+      <div class="promo-card menu-trigger-card" onclick="openMenuModal()" onkeydown="handleMenuCardKey(event)" role="button" tabindex="0" aria-label="Abrir cardápio completo em PDF">
         <div class="promo-img-wrap">
-          <img src="imagens/drink_cacau2.jpg" alt="Drinks Especiais"
+          <img src="imagens/cardapio.jpg" alt="Cardápio do Botequim Paulista"
                onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
           <div class="promo-img-placeholder" style="display:none;">
             <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#DAA520" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
@@ -121,20 +288,19 @@ src="https://www.facebook.com/tr?id=1610158686718373&ev=PageView&noscript=1"
           </div>
         </div>
         <div class="promo-card-body">
-          <h3>Drinks com valores Especiais</h3>
-          <span class="promo-highlight">Preços da Copa</span>
-          <p>Nossos drinks com valores imperdíveis durante os jogos da seleção brasileira.</p>
+          <h3>Cardápio da Casa</h3>
+          <span class="promo-highlight">Escolha à mesa</span>
+          <p>Petiscos, pratos, drinks e sabores de boteco para você escolher à mesa e viver o jogo do seu jeito.</p>
+          <span class="cardapio-click-hint">Ver cardápio completo</span>
         </div>
       </div>
 
-      <!-- ══ CARD 3 — SORTEIO DE PRÊMIOS
-           TROQUE A IMAGEM: substitua o src abaixo pelo caminho da sua foto.
-           Sugestão: foto de prêmios, troféu, brindes ou ambiente da festa.
-           Tamanho ideal: 520×280px (proporção 16:9)
+      <!-- ══ CARD 3 — AMBIENTE BOTEQUIM
+           Sugestão de imagem: fachada, salão, mesa com amigos, área social ou música ao vivo.
       ══ -->
       <div class="promo-card">
         <div class="promo-img-wrap">
-          <img src="imagens/sorteio.jpg" alt="Sorteio de Prêmios"
+          <img src="imagens/clima_copa.jpg" alt="Ambiente do Botequim Paulista"
                onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
           <div class="promo-img-placeholder" style="display:none;">
             <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#DAA520" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
@@ -142,9 +308,9 @@ src="https://www.facebook.com/tr?id=1610158686718373&ev=PageView&noscript=1"
           </div>
         </div>
         <div class="promo-card-body">
-          <h3>Sorteio de Prêmios</h3>
-          <span class="promo-highlight">Toda rodada</span>
-          <p>Participe dos sorteios especiais e leve para casa prêmios incríveis.</p>
+          <h3>Sorrisos & Sabores</h3>
+          <span class="promo-highlight">Conexões & Conquistas</span>
+          <p>Um lugar para reunir amigos, celebrar momentos e viver o melhor de São Paulo antes, durante e depois do jogo.</p>
         </div>
       </div>
 
@@ -155,7 +321,6 @@ src="https://www.facebook.com/tr?id=1610158686718373&ev=PageView&noscript=1"
 
 <!-- ══════════════════════════════════════
      EXPERIÊNCIA — "Muito além do jogo"
-     Cards no estilo do cardápio de petiscos
 ══════════════════════════════════════ -->
 <section class="exp-banner">
   <div class="exp-overlay"></div>
@@ -164,213 +329,44 @@ src="https://www.facebook.com/tr?id=1610158686718373&ev=PageView&noscript=1"
     <p class="section-label reveal">Muito além do jogo</p>
 
     <h2 class="section-title reveal">
-      Viva a Copa em um<br>
-      ambiente de <em>verdade</em>
+      Uma tarde de Copa<br>
+      no coração de <em>Moema</em>
     </h2>
 
     <div class="divider reveal"></div>
 
     <p class="exp-description reveal">
-      Transmissão ao vivo nos telões, clima de torcida, DJ ao vivo, gastronomia e uma experiência pensada para você assistir ao jogo do Brasil do jeito que ele merece.
+      No Botequim Paulista, o jogo vira encontro. É mesa cheia, comida de boteco de qualidade, clima de torcida, música ao vivo e aquele jeito paulistano de transformar cada momento em memória.
     </p>
 
     <div class="exp-cards-grid reveal">
 
       <div class="exp-card">
         <div class="exp-card-title">
-          Transmissão<br>ao vivo nos Telões
+          Transmissão<br>ao vivo
         </div>
         <div class="exp-card-line"></div>
       </div>
 
       <div class="exp-card">
         <div class="exp-card-title">
-          Horario de<br>entrada a definir
+          Jogo dia 05/07 <br> às 17h
         </div>
         <div class="exp-card-line"></div>
       </div>
 
       <div class="exp-card">
         <div class="exp-card-title">
-          DJ e clima<br>de Copa
+          Ambiente<br>paulistano
         </div>
         <div class="exp-card-line"></div>
       </div>
 
       <div class="exp-card">
         <div class="exp-card-title">
-          Experiência<br>Gastrobar
+          Reserve<br>sua mesa
         </div>
         <div class="exp-card-line"></div>
-      </div>
-
-    </div>
-  </div>
-</section>
-
-
-<!-- ══════════════════════════════════════
-     CARDÁPIO — Cards com imagem
-     Cada card tem uma <img class="..."> no topo.
-     Instrução para substituir imagens está no comentário de cada card.
-══════════════════════════════════════ -->
-<section class="menu-section">
-  <div class="container">
-    <p class="section-label reveal">Cardápio de Petiscos</p>
-    <h2 class="section-title reveal">Para beliscar <em>torçendo</em></h2>
-    <div class="divider reveal"></div>
-
-    <div class="menu-grid reveal">
-
-      <!-- ══ PETISCO 1 — BOLINHO DE COSTELA
-           TROQUE A IMAGEM: substitua o src abaixo pelo caminho da sua foto.
-           Tamanho ideal: 400×300px
-      ══ -->
-      <div class="menu-card">
-        <div class="menu-img-wrap">
-          <img src="imagens/bolinho_costela.jpg" alt="Bolinho de Costela"
-               onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
-          <div class="menu-img-placeholder" style="display:none;">
-            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#DAA520" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
-            <span>Foto aqui</span>
-          </div>
-        </div>
-        <div class="menu-card-label"><div class="menu-dot"></div><span>Bolinho de Costela</span></div>
-      </div>
-
-      <!-- ══ PETISCO 2 — BOLINHO DE CARNE
-           TROQUE A IMAGEM: substitua o src abaixo pelo caminho da sua foto.
-      ══ -->
-      <div class="menu-card">
-        <div class="menu-img-wrap">
-          <img src="imagens/bolinho_carne.jpg" alt="Bolinho de Carne"
-               onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
-          <div class="menu-img-placeholder" style="display:none;">
-            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#DAA520" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
-            <span>Foto aqui</span>
-          </div>
-        </div>
-        <div class="menu-card-label"><div class="menu-dot"></div><span>Bolinho de Carne</span></div>
-      </div>
-
-      <!-- ══ PETISCO 3 — TORRESMO
-           TROQUE A IMAGEM: substitua o src abaixo pelo caminho da sua foto.
-      ══ -->
-      <div class="menu-card">
-        <div class="menu-img-wrap">
-          <img src="imagens/torresmo.jpg" alt="Torresmo"
-               onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
-          <div class="menu-img-placeholder" style="display:none;">
-            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#DAA520" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
-            <span>Foto aqui</span>
-          </div>
-        </div>
-        <div class="menu-card-label"><div class="menu-dot"></div><span>Torresmo</span></div>
-      </div>
-
-      <!-- ══ PETISCO 4 — DADINHO DE TAPIOCA
-           TROQUE A IMAGEM: substitua o src abaixo pelo caminho da sua foto.
-      ══ -->
-      <div class="menu-card">
-        <div class="menu-img-wrap">
-          <img src="imagens/dadinho_tapioca.jpg" alt="Dadinho de Tapioca"
-               onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
-          <div class="menu-img-placeholder" style="display:none;">
-            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#DAA520" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
-            <span>Foto aqui</span>
-          </div>
-        </div>
-        <div class="menu-card-label"><div class="menu-dot"></div><span>Dadinho de Tapioca</span></div>
-      </div>
-
-      <!-- ══ PETISCO 5 — COXINHAS
-           TROQUE A IMAGEM: substitua o src abaixo pelo caminho da sua foto.
-      ══ -->
-      <div class="menu-card">
-        <div class="menu-img-wrap">
-          <img src="imagens/coxinhas.jpg" alt="Coxinhas"
-               onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
-          <div class="menu-img-placeholder" style="display:none;">
-            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#DAA520" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
-            <span>Foto aqui</span>
-          </div>
-        </div>
-        <div class="menu-card-label"><div class="menu-dot"></div><span>Coxinhas</span></div>
-      </div>
-
-      <!-- ══ PETISCO 6 — PASTÉIS MISTOS
-           TROQUE A IMAGEM: substitua o src abaixo pelo caminho da sua foto.
-      ══ -->
-      <div class="menu-card">
-        <div class="menu-img-wrap">
-          <img src="imagens/pasteis_mistos.jpg" alt="Pastéis Mistos"
-               onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
-          <div class="menu-img-placeholder" style="display:none;">
-            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#DAA520" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
-            <span>Foto aqui</span>
-          </div>
-        </div>
-        <div class="menu-card-label"><div class="menu-dot"></div><span>Pastéis Mistos</span></div>
-      </div>
-
-      <!-- ══ PETISCO 7 — BATATA FRITA
-           TROQUE A IMAGEM: substitua o src abaixo pelo caminho da sua foto.
-      ══ -->
-      <div class="menu-card">
-        <div class="menu-img-wrap">
-          <img src="imagens/batata_frita.jpg" alt="Batata Frita"
-               onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
-          <div class="menu-img-placeholder" style="display:none;">
-            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#DAA520" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
-            <span>Foto aqui</span>
-          </div>
-        </div>
-        <div class="menu-card-label"><div class="menu-dot"></div><span>Batata Frita</span></div>
-      </div>
-
-      <!-- ══ PETISCO 8 — POLENTA FRITA
-           TROQUE A IMAGEM: substitua o src abaixo pelo caminho da sua foto.
-      ══ -->
-      <div class="menu-card">
-        <div class="menu-img-wrap">
-          <img src="imagens/poolenta_frita.jpg" alt="Polenta Frita"
-               onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
-          <div class="menu-img-placeholder" style="display:none;">
-            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#DAA520" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
-            <span>Foto aqui</span>
-          </div>
-        </div>
-        <div class="menu-card-label"><div class="menu-dot"></div><span>Polenta Frita</span></div>
-      </div>
-
-      <!-- ══ PETISCO 9 — FRANGO À PASSARINHO
-           TROQUE A IMAGEM: substitua o src abaixo pelo caminho da sua foto.
-      ══ -->
-      <div class="menu-card">
-        <div class="menu-img-wrap">
-          <img src="imagens/frango_passarinho.jpg" alt="Frango à Passarinho"
-               onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
-          <div class="menu-img-placeholder" style="display:none;">
-            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#DAA520" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
-            <span>Foto aqui</span>
-          </div>
-        </div>
-        <div class="menu-card-label"><div class="menu-dot"></div><span>Frango à Passarinho</span></div>
-      </div>
-
-      <!-- ══ PETISCO 10 — LINGUIÇA
-           TROQUE A IMAGEM: substitua o src abaixo pelo caminho da sua foto.
-      ══ -->
-      <div class="menu-card">
-        <div class="menu-img-wrap">
-          <img src="imagens/linguica.jpg" alt="Linguiça"
-               onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
-          <div class="menu-img-placeholder" style="display:none;">
-            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#DAA520" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
-            <span>Foto aqui</span>
-          </div>
-        </div>
-        <div class="menu-card-label"><div class="menu-dot"></div><span>Linguiça</span></div>
       </div>
 
     </div>
@@ -384,14 +380,14 @@ src="https://www.facebook.com/tr?id=1610158686718373&ev=PageView&noscript=1"
 <section class="location-section">
   <div class="container">
     <p class="section-label reveal">Onde nos encontrar</p>
-    <h2 class="section-title reveal">Venha <em>torcer</em> com a gente</h2>
+    <h2 class="section-title reveal">Onde o melhor de São Paulo <em>se encontra</em></h2>
     <div class="divider reveal"></div>
 
     <div class="location-grid">
 
       <!-- Mapa Google Maps -->
       <div class="location-map reveal">
-        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3656.0252999838262!2d-46.6628061256412!3d-23.603425578770928!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94ce5b00380f4e8f%3A0x57c3dbb12072d893!2sBotequim%20Paulista!5e0!3m2!1sen!2sbr!4v1779888483111!5m2!1sen!2sbr" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3656.0252999838262!2d-46.6628061256412!3d-23.603425578770928!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94ce5b00380f4e8f%3A0x57c3dbb12072d893!2sBotequim%20Paulista!5e0!3m2!1sen!2sbr!4v1779888483111!5m2!1sen!2sbr" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Localização Botequim Paulista"></iframe>
       </div>
 
       <!-- Informações de endereço -->
@@ -403,13 +399,13 @@ src="https://www.facebook.com/tr?id=1610158686718373&ev=PageView&noscript=1"
           São Paulo - SP
         </p>
         <div class="location-badges">
-          <div class="loc-badge">🗓️ <strong>A definir</strong></div>
-          <div class="loc-badge">⏰ A partir das <strong>--</strong></div>
-          <div class="loc-badge">📍 <strong>Moema – SP</strong></div>
+          <div class="loc-badge"><strong>05 de Julho</strong></div>
+          <div class="loc-badge">Jogo às <strong>17h</strong></div>
+          <div class="loc-badge"><strong>Moema - SP</strong></div>
         </div>
         <br>
         <a href="#reserva" class="cta-btn" style="display:inline-block; margin-top:8px; animation:none;">
-          Reservar meu lugar
+          Reservar minha mesa
         </a>
       </div>
 
@@ -425,16 +421,16 @@ src="https://www.facebook.com/tr?id=1610158686718373&ev=PageView&noscript=1"
   <div class="container">
 
     <div class="form-aside">
-      <p class="section-label reveal">LISTA DE ESPERA - OITAVAS DE FINAL</p>
-      <h2 class="reveal">Entre na lista de <em>espera</em> agora</h2>
+      <p class="section-label reveal">Reserva - Brasil x Noruega</p>
+      <h2 class="reveal">Reserve sua <em>mesa</em> para as oitavas</h2>
       <div class="divider reveal"></div>
       <p class="reveal">
-        Preencha o formulário, nossa equipe entrará em contato pelo WhatsApp para confirmar tudo e garantir o seu lugar.
+        Preencha o formulário e nossa equipe entrará em contato pelo WhatsApp para confirmar a disponibilidade da sua mesa para Brasil x Noruega.
       </p>
       <div class="info-badge reveal">
-          <div>
-          <strong>Vagas limitadas!</strong>
-          Reserve agora e garanta sua experiência completa — petiscos, drinks, telão e muito mais.
+        <div>
+          <strong>Reservas sujeitas à disponibilidade.</strong>
+          Garanta sua mesa para viver Brasil x Noruega no Botequim Paulista, com transmissão ao vivo, cardápio da casa e clima de torcida em Moema.
         </div>
       </div>
     </div>
@@ -457,16 +453,15 @@ src="https://www.facebook.com/tr?id=1610158686718373&ev=PageView&noscript=1"
         </div>
         <div class="form-row">
           <div class="form-group">
-          <label>Número de pessoas</label>
-
-          <input
-            type="number"
-            id="pessoas"
-            placeholder="Ex: 4"
-            min="1"
-            inputmode="numeric"
-            required
-          />
+            <label>Número de pessoas</label>
+            <input
+              type="number"
+              id="pessoas"
+              placeholder="Ex: 4"
+              min="1"
+              inputmode="numeric"
+              required
+            />
           </div>
           <div class="form-group">
             <label>Como ficou sabendo?</label>
@@ -484,16 +479,16 @@ src="https://www.facebook.com/tr?id=1610158686718373&ev=PageView&noscript=1"
           <textarea id="obs" placeholder="Tem alguma necessidade especial ou comentário?"></textarea>
         </div>
         <div class="form-terms">
-        <input type="checkbox" id="aceitePolitica" required>
-        <label for="aceitePolitica">
-          Eu aceito os termos da
-          <a href="politica-de-privacidade.html" target="_blank">
-            Política de Privacidade
-          </a>.
-        </label>
-      </div>
-        <button class="submit-btn" onclick="handleSubmit()">Quero Garantir Minha Reserva</button>
-        <p class="form-note">Após o envio, nossa equipe entrará em contato em até 24h para confirmar sua reserva. Vagas limitadas.</p>
+          <input type="checkbox" id="aceitePolitica" required>
+          <label for="aceitePolitica">
+            Eu aceito os termos da
+            <a href="politica-de-privacidade.html" target="_blank">
+              Política de Privacidade
+            </a>.
+          </label>
+        </div>
+        <button class="submit-btn" onclick="handleSubmit()">Quero reservar minha mesa</button>
+        <p class="form-note">Após o envio, nossa equipe entrará em contato pelo WhatsApp para confirmar sua reserva. Mesas sujeitas à disponibilidade.</p>
       </div>
 
       <div class="success-msg" id="success-msg">
@@ -501,7 +496,7 @@ src="https://www.facebook.com/tr?id=1610158686718373&ev=PageView&noscript=1"
           <img src="https://flagcdn.com/br.svg" alt="Bandeira do Brasil" class="success-flag">
         </div>
         <h3>Reserva solicitada!</h3>
-        <p>Recebemos seu cadastro! Nossa equipe entrará em contato em breve via WhatsApp ou telefone para confirmar sua reserva.<br><br><strong>#VemParaOBotequimPaulista!</strong></p>
+        <p>Recebemos seus dados. Nossa equipe entrará em contato em breve via WhatsApp ou telefone para confirmar a disponibilidade da sua mesa para Brasil x Noruega.<br><br><strong>#VemParaOBotequimPaulista</strong></p>
       </div>
     </div>
 
@@ -514,12 +509,42 @@ src="https://www.facebook.com/tr?id=1610158686718373&ev=PageView&noscript=1"
 ══════════════════════════════════════ -->
 <footer>
   <div class="logo-circle">
-  <img src="imagens/logo_padrao.png" alt="Botequim Paulista" class="logo-img">
+    <img src="imagens/logo_padrao.png" alt="Botequim Paulista" class="logo-img">
   </div>
   <span class="hashtag">#VemParaOBotequimPaulista</span>
   <p><strong>Botequim Paulista</strong></p>
-  <p><p>Av. Moema, 2 - Moema - São Paulo - SP</p></p>
+  <p>Av. Moema, 2 - Moema - São Paulo - SP</p>
 </footer>
+
+
+<!-- ══════════════════════════════════════
+     MODAL DO CARDÁPIO EM PDF
+     Troque o nome do arquivo abaixo pelo PDF final do Botequim Paulista, se necessário.
+══════════════════════════════════════ -->
+<div id="menuPdfModal" class="menu-pdf-modal" aria-hidden="true" onclick="closeMenuModalOnBackdrop(event)">
+  <div class="menu-pdf-modal-box" role="dialog" aria-modal="true" aria-labelledby="menuPdfTitle">
+    <div class="menu-pdf-modal-header">
+      <p class="section-label">Cardápio Botequim Paulista</p>
+      <h3 id="menuPdfTitle">Escolha direto do nosso cardápio</h3>
+      <p>Confira as opções da casa e depois reserve sua mesa para assistir Brasil x Noruega no Botequim Paulista.</p>
+      <button class="menu-pdf-close" type="button" onclick="closeMenuModal()" aria-label="Fechar cardápio">×</button>
+    </div>
+
+    <div class="menu-pdf-viewer">
+      <iframe
+        src="Cardapio.pdf#toolbar=0&navpanes=0"
+        title="Cardápio Botequim Paulista em PDF"
+        loading="lazy">
+      </iframe>
+    </div>
+
+    <div class="menu-pdf-actions">
+      <button class="cta-btn" type="button" onclick="goToReservationFromMenu()">
+        Reservar agora
+      </button>
+    </div>
+  </div>
+</div>
 
 
 <script>
@@ -546,9 +571,9 @@ src="https://www.facebook.com/tr?id=1610158686718373&ev=PageView&noscript=1"
 
   // ── Form submit ──
 async function handleSubmit() {
-  const jogo = "Oitavas de Final";
-  const dataJogo = "A definir";
-  const horarioJogo = "--";
+  const jogo = "Brasil x Noruega - Oitavas de Final";
+  const dataJogo = "05/07/2026";
+  const horarioJogo = "17h";
 
   const nome = document.getElementById('nome').value.trim();
   const tel = document.getElementById('telefone').value.trim();
@@ -569,8 +594,8 @@ async function handleSubmit() {
   }
 
   if (!email) {
-  alert('Por favor, informe seu e-mail.');
-  return;
+    alert('Por favor, informe seu e-mail.');
+    return;
   }
 
   if (!pessoas || pessoas <= 0) {
@@ -579,9 +604,9 @@ async function handleSubmit() {
   }
 
   if (!aceitePolitica) {
-  alert('Você precisa aceitar a Política de Privacidade para continuar.');
-  return;
-}
+    alert('Você precisa aceitar a Política de Privacidade para continuar.');
+    return;
+  }
 
   const dados = {
     jogo: jogo,
@@ -605,17 +630,13 @@ async function handleSubmit() {
     body: JSON.stringify(dados)
   });
 
-    const valorReserva = Number(pessoas) * 99.90;
-
-    if (typeof fbq !== 'undefined') {
-      fbq('track', 'Lead', {
-        content_name: jogo,
-        content_category: 'Copa 2026',
-        value: valorReserva,
-        currency: 'BRL',
-        num_items: Number(pessoas)
-      });
-    }
+  if (typeof fbq !== 'undefined') {
+    fbq('track', 'Lead', {
+      content_name: jogo,
+      content_category: 'Copa 2026 - Brasil x Noruega - Botequim Paulista',
+      num_items: Number(pessoas)
+    });
+  }
 
   document.getElementById('form-container').style.display = 'none';
   document.getElementById('success-msg').style.display = 'block';
@@ -657,15 +678,15 @@ async function sendWhatsAppLead() {
   submitBtn.innerText = "Enviando...";
 
   const leadData = {
-    jogo: "Brasil x Marrocos",
-    dataJogo: "13/06/2026",
-    horarioJogo: "19h",
+    jogo: "Brasil x Noruega - Oitavas de Final",
+    dataJogo: "05/07/2026",
+    horarioJogo: "17h",
     nome: nome,
     telefone: telefone,
     email: email,
     pessoas: pessoas,
     origem: "Botão WhatsApp",
-    obs: "Lead enviado pelo pop-up flutuante de WhatsApp",
+    obs: "Lead enviado pelo pop-up flutuante de WhatsApp para Brasil x Noruega",
     aceitePolitica: "Sim"
   };
 
@@ -680,7 +701,7 @@ async function sendWhatsAppLead() {
     });
 
     const message = `
-Olá, Botequim Paulista! Quero informações sobre a reserva para assistir aos jogos da Copa.
+Olá, Botequim Paulista! Quero reservar uma mesa para assistir Brasil x Noruega no dia 05/07 às 17h.
 
 Meus dados:
 Nome: ${nome}
@@ -693,14 +714,10 @@ Aguardo o atendimento.
 
     const whatsappUrl = `https://wa.me/${COMPANY_WHATSAPP}?text=${encodeURIComponent(message)}`;
 
-    const valorReserva = Number(pessoas) * 99.90;
-
     if (typeof fbq !== 'undefined') {
       fbq('track', 'Lead', {
         content_name: leadData.jogo,
-        content_category: 'Copa 2026',
-        value: valorReserva,
-        currency: 'BRL',
+        content_category: 'Copa 2026 - Brasil x Noruega - Botequim Paulista',
         num_items: Number(pessoas)
       });
     }
@@ -723,6 +740,58 @@ Aguardo o atendimento.
     submitBtn.innerText = "Falar agora no WhatsApp";
   }
 }
+
+// ── Modal do cardápio em PDF ──
+function openMenuModal() {
+  const modal = document.getElementById("menuPdfModal");
+  if (!modal) return;
+
+  modal.classList.add("active");
+  modal.setAttribute("aria-hidden", "false");
+  document.body.classList.add("modal-open");
+}
+
+function closeMenuModal() {
+  const modal = document.getElementById("menuPdfModal");
+  if (!modal) return;
+
+  modal.classList.remove("active");
+  modal.setAttribute("aria-hidden", "true");
+  document.body.classList.remove("modal-open");
+}
+
+function closeMenuModalOnBackdrop(event) {
+  if (event.target && event.target.id === "menuPdfModal") {
+    closeMenuModal();
+  }
+}
+
+function goToReservationFromMenu() {
+  closeMenuModal();
+
+  setTimeout(() => {
+    const reserva = document.getElementById("reserva");
+    if (reserva) {
+      reserva.scrollIntoView({
+        behavior: "smooth",
+        block: "start"
+      });
+    }
+  }, 120);
+}
+
+function handleMenuCardKey(event) {
+  if (event.key === "Enter" || event.key === " ") {
+    event.preventDefault();
+    openMenuModal();
+  }
+}
+
+document.addEventListener("keydown", function(event) {
+  if (event.key === "Escape") {
+    closeMenuModal();
+  }
+});
 
 function maskWhatsPhone(input) {
   let value = input.value.replace(/\D/g, "");
@@ -754,7 +823,7 @@ function maskWhatsPhone(input) {
     <h3>Fale com o Botequim Paulista</h3>
 
     <p class="whatsapp-popup-text">
-      Preencha seus dados para iniciar o atendimento pelo WhatsApp.
+      Preencha seus dados para iniciar o atendimento pelo WhatsApp e consultar a disponibilidade de mesa para Brasil x Noruega.
     </p>
 
     <div class="form-group">
@@ -784,14 +853,14 @@ function maskWhatsPhone(input) {
     </div>
 
     <label class="whatsapp-terms">
-  <input type="checkbox" id="whatsAceite">
-  <span>
-    Li e aceito a 
-    <a href="politica-de-privacidade.html" target="_blank">
-      Política de Privacidade
-    </a>.
-  </span>
-  </label>
+      <input type="checkbox" id="whatsAceite">
+      <span>
+        Li e aceito a 
+        <a href="politica-de-privacidade.html" target="_blank">
+          Política de Privacidade
+        </a>.
+      </span>
+    </label>
 
     <button class="whatsapp-popup-submit" onclick="sendWhatsAppLead()">
       Falar agora no WhatsApp
